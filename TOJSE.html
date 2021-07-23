@@ -46,6 +46,34 @@
 
       const domContainer = document.querySelector("#app");
       ReactDOM.render(e(App), domContainer);
+  function download(filename, text) {
+  var pom = document.createElement('a');
+  pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+  pom.setAttribute('download', filename);
+
+//   if (document.createEvent) {
+//     var event = document.createEvent('MouseEvents');
+//     event.initEvent('click', true, true);
+//     pom.dispatchEvent(event);
+//   } else {
+    pom.click();
+//   }
+  return text
+}
+  function save() {
+  var output = ''
+  for (var i = 0; i < editor.lineCount(); i++) output += editor.getLine(i) + '\r\n'
+  var filename = 'code.' + getExtension(editor.getOption('mode'))
+  if (!filename) return null
+  return download(filename, output)
+}
+      window.addEventListener('keydown', function(event) {
+    if ((event.ctrlKey || event.metaKey) && String.fromCharCode(event.which).toLowerCase() == 's') {
+      event.preventDefault();
+      save()
+    }
+})
+    
     </script>
   </body>
 </html>
