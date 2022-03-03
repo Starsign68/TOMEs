@@ -32,7 +32,7 @@
       <div id="app" style="height: 100vh;"></div>
       <script type="text/javascript">
          const e = React.createElement;
-         const mode = 'js';
+         const mode = 'java';
          
          function App() {
            const Editor = monaco_react.default;
@@ -48,7 +48,7 @@
          ReactDOM.render(e(App), domContainer);
          
          
-         }
+         
          window.addEventListener('keydown', function(event) {
          if ((event.ctrlKey || event.metaKey) && String.fromCharCode(event.which).toLowerCase() == 's') {
          event.preventDefault();
